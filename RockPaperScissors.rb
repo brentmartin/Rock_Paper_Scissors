@@ -18,6 +18,16 @@
 # else
 # end
 
+@p_rock = false
+@p_paper = false
+@p_scissors = false
+
+@c_rock = false
+@c_paper = false
+@c_scissors = false
+
+
+
 # puts c_rock
 # puts c_paper
 # puts c_scissors
@@ -42,30 +52,49 @@
 #   puts "Player: #{p_move} vs Computer: #{c_move} ----- TIE"
 # end
 
-
-  def player_move
-    puts "Choose (p)aper, (r)ock, or (s)cissors"
-    print "> "
-    gets.chomp
-    case (p_choice)
-    when p_choice.upcase = "P"
-      p_rock = true
-    when p_choice.upcase = "R"
-      p_paper = true
-    when p_choice.upcase = "S"
-      p_scissors = true
+def p_move
+  puts "Choose (p)aper, (r)ock, or (s)cissors"
+  print "> "
+  p_choice = gets.chomp
+  if p_choice.upcase == "R"
+      @p_rock = true
+      puts "choice made"
+    elsif p_choice.upcase == "P"
+      @p_paper = true
+      puts "choice made"
+    elsif p_choice.upcase == "S"
+      @p_scissors = true
+      puts "choice made"
     else
-      puts "Not a valid choice"
-      player_move
-    end
   end
-# end
+end
 
-player_move
+def c_move
+  c_choice = rand(1..3).to_i
+  if c_choice == 1
+      @c_rock = true
+    elsif c_choice == 2
+      @c_paper = true
+    elsif c_choice == 3
+      @c_scissors = true
+    else
+  end
+end
 
-puts p_rock
-puts p_paper
-puts p_scissors
+p_move
+c_move
 
+
+puts
+
+puts "Player: Rock is #{@p_rock}"
+puts "Player: Paper is #{@p_paper}"
+puts "Player: Scissors is #{@p_scissors}"
+
+puts
+
+puts "Computer: Rock is #{@c_rock}"
+puts "Computer: Paper is #{@c_paper}"
+puts "Computer: Scissors is #{@c_scissors}"
 # game = Game.new
 # game.play
