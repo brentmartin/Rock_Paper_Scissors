@@ -3,22 +3,36 @@
 #     @player_name = player_name
 #   end
 
+  def timing
+    sleep 1
+    print "."
+    sleep 1
+    print "."
+    sleep 1
+    print "."
+    sleep 1
+    puts "\n\n\n\n\n"
+  end
+
+  def establish_falses
+    @p_rock = false
+    @p_paper = false
+    @p_scissors = false
+    @c_rock = false
+    @c_paper = false
+    @c_scissors = false
+  end
+
   def play
-    def establish_falses
-      @p_rock = false
-      @p_paper = false
-      @p_scissors = false
-      @c_rock = false
-      @c_paper = false
-      @c_scissors = false
-    end
+    establish_falses
     p_move
+    timing
     c_move
     shoot
   end
 
   def p_move
-    puts "Choose (p)aper, (r)ock, or (s)cissors"
+    puts "Choose (p)aper, (r)ock, and (s)cissors"
     print "> "
     p_choice = gets.chomp
     if p_choice.upcase == "R"
