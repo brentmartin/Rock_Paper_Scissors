@@ -1,10 +1,11 @@
-# class Game
-#   def initalize(play_name)
-#     @player_name = player_name
-#   end
+class Game
+  def initalize(play_name)
+    @player_name = player_name
+  end
 
 
   def play
+    system('clear')
     set_falses           # Sets (or resets) all the variables back to false
     p_move               # Prompts player to select a letter associated with move and uses if/else statement to change selected variable from false > true
     timing               # Pausing, for dramatic effect
@@ -96,18 +97,14 @@
     answer = gets.chomp
     if answer.upcase == "Y"
       play
-      elsif answer.upcase == "N"
-        exit
-      else
-        puts "Invalid answer"
-        continue
+    elsif answer.upcase == "N"
+      exit
+    else
+      puts "Invalid answer"
+      continue
     end
   end
+end
 
-  system('clear')
-  play
-
-# end
-#
-# game = Game.new
-# game.play
+game = Game.new
+game.play
