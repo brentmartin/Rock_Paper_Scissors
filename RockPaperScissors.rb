@@ -3,18 +3,18 @@
 #     @player_name = player_name
 #   end
 
-  def timing
-    sleep 1
-    print "."
-    sleep 1
-    print "."
-    sleep 1
-    print "."
-    sleep 1
-    puts "\n\n\n\n\n"
+
+  def play
+    set_falses           # Sets (or resets) all the variables back to false
+    p_move               # Prompts player to select a letter associated with move and uses if/else statement to change selected variable from false > true
+    timing               # Pausing, for dramatic effect
+    c_move               # Randomly selects a number 1..3, and uses if if/else statement to change selected variable from false > true
+    shoot                # Uses booleans to select appropriate outcome
+    continue             # Prompts user to continue or quit
   end
 
-  def establish_falses
+
+  def set_falses
     @p_rock = false
     @p_paper = false
     @p_scissors = false
@@ -23,28 +23,22 @@
     @c_scissors = false
   end
 
-  def play
-    establish_falses
-    p_move
-    timing
-    c_move
-    shoot
-  end
-
   def p_move
     puts "Choose (p)aper, (r)ock, and (s)cissors"
     print "> "
     p_choice = gets.chomp
     if p_choice.upcase == "R"
         @p_rock = true
-        puts "choice made"
+        puts "*ROCK* chosen"
       elsif p_choice.upcase == "P"
         @p_paper = true
-        puts "choice made"
+        puts "*PAPER* chosen"
       elsif p_choice.upcase == "S"
         @p_scissors = true
-        puts "choice made"
+        puts "*SCISSORS* chosen"
       else
+        puts "Invalid answer"
+        p_move
     end
   end
 
@@ -80,8 +74,37 @@
     elsif @p_scissors && @c_scissors
       puts "Player: *SCISSORS* vs Computer: *SCISSORS* ----- TIE"
     end
+    puts "\n\n\n\n\n"
+    puts "-" * 60
+    puts
   end
 
+  def timing
+    sleep 0.5
+    puts "."
+    sleep 0.5
+    puts "."
+    sleep 0.5
+    puts "."
+    sleep 0.5
+    puts "\n\n"
+  end
+
+  def continue
+    puts "Would you like to play again - (y)es or (n)o?"
+    print "> "
+    answer = gets.chomp
+    if answer.upcase == "Y"
+      play
+      elsif answer.upcase == "N"
+        exit
+      else
+        puts "Invalid answer"
+        continue
+    end
+  end
+
+  system('clear')
   play
 
 # end
