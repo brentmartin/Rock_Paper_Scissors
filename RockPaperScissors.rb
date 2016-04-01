@@ -1,15 +1,13 @@
 class Game
-  def initalize(play_name)
-    @player_name = player_name
-  end
+  attr_accessor :player_choice, :computer_choice
 
 
   def play
     system('clear')
     set_falses           # Sets (or resets) all the variables back to false
-    p_move               # Prompts player to select a letter associated with move and uses if/else statement to change selected variable from false > true
+    player_choice        # Prompts player to select a letter associated with move and uses if/else statement to change selected variable from false > true
     timing               # Pausing, for dramatic effect
-    c_move               # Randomly selects a number 1..3, and uses if if/else statement to change selected variable from false > true
+    computer_choice      # Randomly selects a number 1..3, and uses if if/else statement to change selected variable from false > true
     shoot                # Uses booleans to select appropriate outcome
     continue             # Prompts user to continue or quit
   end
@@ -24,32 +22,32 @@ class Game
     @c_scissors = false
   end
 
-  def p_move
+  def player_choice
     puts "Choose (p)aper, (r)ock, and (s)cissors"
     print "> "
-    p_choice = gets.chomp
-    if p_choice.upcase == "R"
+    pl = gets.chomp
+    if pl.upcase == "R"
         @p_rock = true
         puts "*ROCK* chosen"
-      elsif p_choice.upcase == "P"
+      elsif pl.upcase == "P"
         @p_paper = true
         puts "*PAPER* chosen"
-      elsif p_choice.upcase == "S"
+      elsif pl.upcase == "S"
         @p_scissors = true
         puts "*SCISSORS* chosen"
       else
         puts "Invalid answer"
-        p_move
+        player_choice
     end
   end
 
-  def c_move
-    c_choice = rand(1..3).to_i
-    if c_choice == 1
+  def computer_choice
+    cm = rand(1..3).to_i
+    if cm == 1
         @c_rock = true
-      elsif c_choice == 2
+      elsif cm == 2
         @c_paper = true
-      elsif c_choice == 3
+      elsif cm == 3
         @c_scissors = true
       else
     end
